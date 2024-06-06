@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'grocery-list-app';
+  shawValue =false;
+
+  changeShowValue(){
+    this.shawValue = !this.shawValue;
+  }
 }

@@ -1,0 +1,17 @@
+<!-- src/app/grocery-list/grocery-list.component.html -->
+<h2>Grocery List</h2>
+{{items$ | async}}
+
+<form (ngSubmit)="addItem()">
+  <input type="text" [(ngModel)]="newItem.name" name="name" placeholder="Item Name" />
+  <input type="number" [(ngModel)]="newItem.quantity" name="quantity" placeholder="Quantity" />
+  <button type="submit">Add</button>
+</form>
+
+<ul>
+  <li *ngFor="let item of items$ | async">
+    <input type="text" [(ngModel)]="item.name" (change)="updateItem(item)" />
+    <input type="number" [(ngModel)]="item.quantity" (change)="updateItem(item)" />
+    <button (click)="deleteItem(item.id)">Delete</button>
+  </li>
+</ul>
